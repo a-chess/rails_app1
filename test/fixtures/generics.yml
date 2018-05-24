@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kbn: MyString
+  key1: MyString
+  data1: MyString
+
+two:
+  kbn: MyString
+  key1: MyString
+  data1: MyString
