@@ -1,0 +1,40 @@
+<% provide(:title, 'タイムカード') %>
+
+<%= form_for(@tc,url: timecards_path) do |tc| %>
+	<%= tc.hidden_field :id, value: tc.object.id %>
+	<table border=1 width="80%" align="center">
+		<tr height=40>
+			<td width="10%">対象年月</td>
+			<td width="10%">
+				<%= tc.select :target_month, @targets %>
+			</td>
+			<td width="10%">
+				<%= tc.collection_select :shinsei_kbn, @shinseiKbn, :key1, :data1 %>
+			</td>
+			<td width="10%">氏名</td>
+			<td>
+				<%= @user.name %>
+			</td>
+		</tr>
+	</table>
+	
+	
+	<br />
+	<table border=1 width="80%" align="center">
+		<tr bgcolor="gray" height="30" style="text-align: center">
+			<td width="7%">日付</td>
+			<td width="8%">勤務状況</td>
+			<td width="15%">出勤</td>
+			<td width="15%">退勤</td>
+			<td width="7%">休憩</td>
+			<td>備考</td>
+		</tr>
+		
+		<%= tc.fields_for :timecard_detail do |detail| %>
+			<%= render 'tc_details_fields', f: detail %>
+		<% end %>
+	</table>
+
+	<%= tc.submit "更新" , class: "btn btn-primary"%>
+<% end %>
+
