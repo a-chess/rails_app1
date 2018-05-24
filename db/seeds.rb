@@ -5,19 +5,34 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# 
+# User.create!(name:  "hyuga saito",
+             # email: "hyuga@gmail.com",
+             # password:              "password",
+             # password_confirmation: "password",
+             # admin: true,
+             # emp_id: 1)
 
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin: true)
+# Timecard.create!(emp_id: 1,
+                 # target_month: "201805")
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
+30.times do |n|
+
+  target_date = "2018-05-#{n+1}"
+  
+  TimecardDetail.create!(
+    timecard_id: 1,
+    target_date: target_date,
+    kinmu_jokyo: 0)
 end
+
+# 申請区分
+#Generic.create!(kbn: "K01", key1: 0, data1: "未申請")
+#Generic.create!(kbn: "K01", key1: 1, data1: "申請中")
+#Generic.create!(kbn: "K01", key1: 2, data1: "承認")
+
+# 勤務状況
+#Generic.create!(kbn: "K02", key1: 0, data1: "休日")
+#Generic.create!(kbn: "K02", key1: 1, data1: "出勤")
+#Generic.create!(kbn: "K02", key1: 2, data1: "欠勤")
+#Generic.create!(kbn: "K02", key1: 3, data1: "有給")

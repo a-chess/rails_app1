@@ -3,7 +3,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name
       t.string :email
-
+      t.integer :emp_id, unique: true, null: false, default: 0
+      
       t.timestamps
     end
   end

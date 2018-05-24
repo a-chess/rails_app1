@@ -10,13 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_152842) do
+ActiveRecord::Schema.define(version: 2018_05_23_121132) do
 
-  create_table "friends", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
+  create_table "generics", force: :cascade do |t|
+    t.string "kbn", null: false
+    t.integer "key1", null: false
+    t.string "data1", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["kbn", "key1"], name: "index_generics_on_kbn_and_key1", unique: true
+  end
+
+  create_table "timecard_details", force: :cascade do |t|
+    t.integer "timecard_id"
+    t.date "target_date"
+    t.integer "kinmu_jokyo"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["timecard_id"], name: "index_timecard_details_on_timecard_id"
+  end
+
+  create_table "timecards", force: :cascade do |t|
+    t.integer "emp_id", null: false
+    t.string "target_month", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "shinsei_kbn"
+    t.index ["emp_id", "target_month"], name: "index_timecards_on_emp_id_and_target_month", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -26,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_152842) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.integer "emp_id", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
