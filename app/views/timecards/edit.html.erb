@@ -6,16 +6,14 @@
 		<tr height=40>
 			<td width="10%">対象年月</td>
 			<td width="10%">
-				<%#= tc.select :target_month, @targets %>
 				<%= tc.label :target_month, value: tc.object.target_month %>
 			</td>
 			<td width="10%">
-				<%#= tc.collection_select :shinsei_kbn, @shinseiKbn, :key1, :data1 %>
 				<%= tc.label :shinsei_kbn, value: Generic.find_by(kbn:"K01", key1: tc.object.shinsei_kbn).data1 %>
 			</td>
 			<td width="10%">氏名</td>
 			<td>
-				<%= @user.name %>
+				<%= User.find_by(emp_id: tc.object.emp_id).name %>
 			</td>
 		</tr>
 	</table>

@@ -2,15 +2,19 @@ class TimecardsController < ApplicationController
   include Utility
   
   def show
-    empid = session[:emp_id]
-    @user = User.find_by(emp_id: empid)
-    @tc = Timecard.find(params[:id])
-    @shinseiKbn = Generic.where(kbn: "K01")
-    @jokyoKbn = Generic.where(kbn: "K02")
-    @targets = get_trgmonth_list(empid)
+    init_show_edit
     
-    #未申請状態のみ編集可能
+    #承認画面からの遷移：編集不可
+    @disabled = true
+    render "edit"
+  end
+  
+  def edit
+    init_show_edit
+    
+    #未申請状態以外の時：編集不可
     @disabled = (@tc.shinsei_kbn != 0)
+    
   end
 
   def index
@@ -29,7 +33,7 @@ class TimecardsController < ApplicationController
       end
       
       flash[:success] = "更新に成功しました"
-      redirect_to "#{timecards_path}/#{@tc.id}"
+      redirect_to "#{timecards_path}/#{@tc.id}/edit"
     else
       render plain: "error" #show
     end
@@ -52,6 +56,15 @@ class TimecardsController < ApplicationController
       end
       
       return ary
+    end
+    
+    def init_show_edit
+      empid = session[:emp_id]
+      @user = User.find_by(emp_id: empid)
+      @tc = Timecard.find(params[:id])
+      @shinseiKbn = Generic.where(kbn: "K01")
+      @jokyoKbn = Generic.where(kbn: "K02")
+      @targets = get_trgmonth_list(empid)
     end
     
     

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_105955) do
+ActiveRecord::Schema.define(version: 2018_05_27_032333) do
 
   create_table "generics", force: :cascade do |t|
     t.string "kbn", null: false
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 2018_05_26_105955) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["kbn", "key1"], name: "index_generics_on_kbn_and_key1", unique: true
+  end
+
+  create_table "time_card_indices", force: :cascade do |t|
+    t.string "target_month", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "timecard_details", force: :cascade do |t|

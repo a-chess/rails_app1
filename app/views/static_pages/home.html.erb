@@ -30,11 +30,13 @@
 		    	<%= button_tag "社員マスタ", class: "btn btn-primary", style: "width:80%; height:40px" %>
 		    </td>
 		    <td width="50%" height="50" style="text-align: center">
-		    	<%= button_tag "TC・経費承認", class: "btn btn-primary", style: "width:80%; height:40px" %>
+		    	<%= link_to "TC・経費承認", approval_path, class: "btn btn-primary", style: "width:80%; height:40px" %>
 			</td>
 		</tr>
 	    <tr>
-	    	<td width="50%" height="50"></th>
+	    	<td width="50%" height="50" style="text-align: center">
+	    		<%= link_to "TCマスタメンテ", tcmente_path, class: "btn btn-primary", style: "width:80%; height:40px" %>
+	    	</th>
 	        <td width="50%" height="50"></td>
 	    </tr>
 	</table>

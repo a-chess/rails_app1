@@ -1,0 +1,11 @@
+<% provide(:title, "TCマスタメンテ") %>
+
+<h4>TCインデックス</h4>
+<% @tc_month_list.each do |t| %>
+	<p style="margin-left: 30px"><%= t.target_month%></p>
+<% end %>
+
+<p style="margin-left: 40px">
+<%= link_to "戻る","#" %>
+<%= link_to "追加","#" %>
+</p>
