@@ -1,2 +1,20 @@
-<h1>Timecards#index</h1>
-<p>Find me in app/views/timecards/index.html.erb</p>
+<% provide(:title, 'タイムカード') %>
+
+
+<table border=1 width="20%">
+<tr bgcolor="gray">
+	<th>対象年月</th>
+	<th>ステータス</th>
+</tr>
+
+<% @tc_list.each do |tc|%>
+	<tr>
+		<td>
+			<%= link_to tc.target_month, "#{timecards_path}/#{tc.id}" %>
+		</td>
+		<td>
+			<%= Generic.find_by(kbn:"K01", key1: tc.shinsei_kbn).data1 %>
+		</td>
+	</tr>
+<% end %>
+</table>

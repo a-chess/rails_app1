@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_121132) do
+ActiveRecord::Schema.define(version: 2018_05_26_105955) do
 
   create_table "generics", force: :cascade do |t|
     t.string "kbn", null: false
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_05_23_121132) do
     t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "break_time", default: 60
+    t.string "memo"
     t.index ["timecard_id"], name: "index_timecard_details_on_timecard_id"
   end
 

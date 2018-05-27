@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   
   resources :users
-  #resources :timecards
-  get 'timecards', to: 'timecards#show'
+  get 'timecards/index'
+  get 'timecards/:id', to: 'timecards#show'
   patch 'timecards', to: 'timecards#update'
   
   root :to => 'sessions#new'

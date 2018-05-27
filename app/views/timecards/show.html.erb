@@ -6,10 +6,12 @@
 		<tr height=40>
 			<td width="10%">対象年月</td>
 			<td width="10%">
-				<%= tc.select :target_month, @targets %>
+				<%#= tc.select :target_month, @targets %>
+				<%= tc.label :target_month, value: tc.object.target_month %>
 			</td>
 			<td width="10%">
-				<%= tc.collection_select :shinsei_kbn, @shinseiKbn, :key1, :data1 %>
+				<%#= tc.collection_select :shinsei_kbn, @shinseiKbn, :key1, :data1 %>
+				<%= tc.label :shinsei_kbn, value: Generic.find_by(kbn:"K01", key1: tc.object.shinsei_kbn).data1 %>
 			</td>
 			<td width="10%">氏名</td>
 			<td>
@@ -34,7 +36,9 @@
 			<%= render 'tc_details_fields', f: detail %>
 		<% end %>
 	</table>
-
-	<%= tc.submit "更新" , class: "btn btn-primary"%>
+	<% if !@disabled %>
+		<%= tc.submit "更新",name: "btn_update" , class: "btn btn-primary"%>
+		<%= tc.submit "申請" ,name: "btn_shinsei", class: "btn btn-primary"%>
+	<% end %>
 <% end %>
 
