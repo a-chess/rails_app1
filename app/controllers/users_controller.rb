@@ -8,18 +8,34 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def edit
+    @user = User.find(params[:id])
+    @edit_user = User.find_by(emp_id: session[:emp_id])
+  end
+  
   def new
     @user = User.new
   end
   
   def create
-    @user = User.new(user_params)    # 実装は終わっていないことに注意!
+    @user = User.new(user_params) 
+    @user.emp_id = @user.id
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      flash[:success] = "新規アカウントを作成しました"
+      redirect_to users_path
     else
       render 'new'
+    end
+  end
+  
+  def update
+    @user = User.find_by(params.require(:user).permit(:id))
+    
+    if @user.update_columns(name: params[:user][:name], email: params[:user][:email])
+      flash[:success] = "社員情報を更新しました"
+      render 'edit'
+    else
+      render 'edit'
     end
   end
   
@@ -28,4 +44,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+    
 end

@@ -3,7 +3,6 @@
 <table width="80%" align="center">
 	<tr>
 		<td>
-			<%#= collection_select :approval, :tcindex, @tc_index,:target_month,:target_month,{}, onchange: "test('#{approval_path}')" %>
 			<%= select :approval, :tcindex, 
 				options_for_select(@tc_index.pluck(:target_month),selected: @target),{}, onchange: "test('#{approval_path}')" %>
 		</td>

@@ -1,11 +1,28 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-</div>
+
+<table border=1 width="50%" align="center">
+	<tr>
+		<td bgcolor="gray">
+			名前
+		</td>
+		<td>
+			<%= @user.name %>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="gray">
+			email
+		</td>
+		<td>
+			<%= @user.email %>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="gray">
+			役職
+		</td>
+		<td>
+			<%= @user.admin ? "所属長" : "一般" %>
+		</td>
+	</tr>
+</table>

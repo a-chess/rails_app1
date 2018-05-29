@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   patch 'approval(:id)', to: 'approval#update'
   
   get 'tcmente', to: 'timecard_master_mente#index'
+  post 'tcmente', to: 'timecard_master_mente#create'
+  post 'tcmente/(:target_month)', to: 'timecard_master_mente#create_cal'
   
   root :to => 'sessions#new'
   

@@ -14,7 +14,6 @@ class TimecardsController < ApplicationController
     
     #未申請状態以外の時：編集不可
     @disabled = (@tc.shinsei_kbn != 0)
-    
   end
 
   def index
