@@ -70,3 +70,8 @@ gem "jquery-rails"
 
 gem "faker"
 
+#capistrano追加
+gem 'capistrano' , '~> 3.0.1'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv'
+gem 'capistrano-rails'
