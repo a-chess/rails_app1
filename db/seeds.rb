@@ -7,17 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # 
 
-#TimeCardIndex
+# TimeCardIndex
 TimeCardIndex.create!(target_month: "201804")
-TimeCardIndex.create!(target_month: "201805")
 
-#管理者ユーザー登録
-# User.create!(name:  "緒方　孝市",
-             # email: "ogata@gmail.com",
-             # password:              "password",
-             # password_confirmation: "password",
-             # admin: true,
-             # emp_id: 2)
+# 管理者ユーザー登録
+User.create!(name:  "緒方　孝市",
+             email: "ogata@gmail.com",
+             password:              "password",
+             password_confirmation: "password",
+             admin: true,
+             emp_id: 1)
 # 
 # Timecard.create!(emp_id: 2, target_month: "201804")
 # Timecard.create!(emp_id: 2, target_month: "201805")
@@ -89,12 +88,12 @@ TimeCardIndex.create!(target_month: "201805")
 # end
 
 # 申請区分
-#Generic.create!(kbn: "K01", key1: 0, data1: "未申請")
-#Generic.create!(kbn: "K01", key1: 1, data1: "申請中")
-#Generic.create!(kbn: "K01", key1: 2, data1: "承認")
+Generic.create!(kbn: "K01", key1: 0, data1: "未申請")
+Generic.create!(kbn: "K01", key1: 1, data1: "申請中")
+Generic.create!(kbn: "K01", key1: 2, data1: "承認")
 
 # 勤務状況
-#Generic.create!(kbn: "K02", key1: 0, data1: "休日")
-#Generic.create!(kbn: "K02", key1: 1, data1: "出勤")
-#Generic.create!(kbn: "K02", key1: 2, data1: "欠勤")
-#Generic.create!(kbn: "K02", key1: 3, data1: "有給")
+Generic.create!(kbn: "K02", key1: 0, data1: "休日")
+Generic.create!(kbn: "K02", key1: 1, data1: "出勤")
+Generic.create!(kbn: "K02", key1: 2, data1: "欠勤")
+Generic.create!(kbn: "K02", key1: 3, data1: "有給")

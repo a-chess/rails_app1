@@ -19,8 +19,10 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params) 
-    @user.emp_id = @user.id
+    #@user.emp_id = @user.id
     if @user.save
+      @user.emp_id = @user.id
+      @user.save
       flash[:success] = "新規アカウントを作成しました"
       redirect_to users_path
     else
